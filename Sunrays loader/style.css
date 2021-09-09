@@ -1,0 +1,44 @@
+:root {
+  --data-x:1;
+  --delay: 0.1s;
+  --degrees: 7deg;
+}
+
+
+.block {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.holder {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  animation: rotate 2s ease-in-out infinite;
+  transform-origin: right bottom;
+  animation-delay: calc(var(--data-x) * var(--delay));
+  animation-fill-mode: both;
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  background-color: gray;
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(calc(var(--data-x) * var(--degrees) * -1));
+  }
+  100% {
+    transform: rotate(calc(360deg - (var(--data-x) * var(--degrees))));
+  }
+}
