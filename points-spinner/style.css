@@ -1,7 +1,16 @@
 :root {
   --data-x:1;
   --delay: 0.1s;
-  --degrees: 7deg;
+  /* change degrees to change distance between points */
+  --degrees: 10deg;
+  /* change width and height to change spinner radius */
+  --width: 30px;
+  --height: 30px;
+  /* change pointWidth and pointHeight to change size of points*/
+  --pointWidth: 8px;
+  --pointHeight: 8px;
+  /* cahange color of points*/
+  --color: gray;
 }
 
 
@@ -19,18 +28,22 @@
   right: 0;
   bottom: 0;
   left: 0;
-  width: 50px;
-  height: 50px;
+  width: var(--width);
+  height: var(--height);
   animation: rotate 2s ease-in-out infinite;
   transform-origin: right bottom;
   animation-delay: calc(var(--data-x) * var(--delay));
   animation-fill-mode: both;
 }
 
-.circle {
-  width: 8px;
-  height: 8px;
-  background-color: gray;
+.holder::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--pointWidth);
+  height: var(--pointHeight);
+  background-color: var(--color);
   border-radius: 50%;
 }
 
