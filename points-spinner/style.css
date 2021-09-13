@@ -1,5 +1,10 @@
-:root {
-  --data-x:1;
+.block {
+  position: relative;
+  display: block;
+  left: 50%;
+  top: 50%;
+  margin-top: 100px;;
+
   --delay: 0.1s;
   /* change degrees to change distance between points */
   --degrees: 10deg;
@@ -11,15 +16,6 @@
   --pointHeight: 8px;
   /* cahange color of points*/
   --color: gray;
-}
-
-
-.block {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin: auto;
-  margin-top: 100px;
 }
 
 .holder {

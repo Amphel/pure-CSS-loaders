@@ -1,9 +1,7 @@
-:root {
+.loader {
   --color: gray;
   --width: 100px;
-}
- 
-.loader {
+
   position: relative;
   margin: 0 auto;
   width: var(--width);

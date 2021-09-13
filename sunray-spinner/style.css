@@ -1,0 +1,36 @@
+.spinner {
+  position: relative;
+  
+  /* number of rays. If you change the number of rays, then you should add divs in html */
+  --rays: 12;
+  /* change radius of spinner */
+  --radius: 40px;
+  /* change the delay of animation */
+  --delay: 0.1s;
+}
+
+.sunray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 6px;
+  border-radius: 20%;
+  background-color: rgba(128, 128, 128, 0.3);
+  --az: calc(var(--data-x)*1turn/var(--rays));
+  transform: 
+    rotate(var(--az)) 
+    translate(var(--radius))
+    rotate(calc(0deg));
+  animation: lds-spinner 1s linear infinite;
+  animation-delay: calc(var(--data-x) * var(--delay));
+}
+
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
