@@ -1,53 +1,46 @@
-.block {
+.points-spinner {
   position: relative;
   display: block;
-  left: 50%;
-  top: 50%;
-  margin-top: 100px;;
+  /* diameter of spinner */
+  width: 60px;
+  height: 60px;
 
   --delay: 0.1s;
   /* change degrees to change distance between points */
   --degrees: 10deg;
-  /* change width and height to change spinner radius */
-  --width: 30px;
-  --height: 30px;
-  /* change pointWidth and pointHeight to change size of points*/
-  --pointWidth: 8px;
-  --pointHeight: 8px;
+  /* change diameter to set size of points*/
+  --pointDiameter: 8px;
   /* cahange color of points*/
   --color: gray;
 }
 
-.holder {
+.points-spinner > * {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: var(--width);
-  height: var(--height);
+  width: inherit;
+  height: inherit;
   animation: rotate 2s ease-in-out infinite;
-  transform-origin: right bottom;
-  animation-delay: calc(var(--data-x) * var(--delay));
+  transform-origin: center center;
+  animation-delay: calc(var(--spinner-point) * var(--delay));
   animation-fill-mode: both;
 }
 
-.holder::after {
+.points-spinner > *::after{
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--pointWidth);
-  height: var(--pointHeight);
+  /* center point vertically and most left*/
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--pointDiameter);
+  height: var(--pointDiameter);
   background-color: var(--color);
   border-radius: 50%;
 }
 
 @keyframes rotate {
   0% {
-    transform: rotate(calc(var(--data-x) * var(--degrees) * -1));
+    transform: rotate(calc(var(--spinner-point) * var(--degrees) * -1));
   }
   100% {
-    transform: rotate(calc(360deg - (var(--data-x) * var(--degrees))));
+    transform: rotate(calc(360deg - (var(--spinner-point) * var(--degrees))));
   }
 }
