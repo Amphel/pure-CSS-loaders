@@ -1,25 +1,48 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+
 .points-spinner {
+  /* cahange the color of the points*/
+  --color: #6768ab;
+  /* number of the points; if the number of the points changes, then you should add divs in html */
+  --points: 7;
+  /* change the diameter of the spinner */
+  --spinner-diameter: 80px;
+  /* change the speed of the moving points */
+  --delay: 0.1s;
+  /* change the size of the points*/
+  --point-diameter: 8px;
+
+  /* the distance between the points;
+  all the points are located in the third part of the circle => 120deg */
+  --degrees: calc(120deg / var(--points));
+
   position: relative;
   display: block;
-  /* diameter of spinner */
-  width: 60px;
-  height: 60px;
 
-  --delay: 0.1s;
-  /* change degrees to change distance between points */
-  --degrees: 10deg;
-  /* change diameter to set size of points*/
-  --pointDiameter: 8px;
-  /* cahange color of points*/
-  --color: gray;
+  width: var(--spinner-diameter);
+  height: var(--spinner-diameter);
 }
 
 .points-spinner > * {
   position: absolute;
+
   width: inherit;
   height: inherit;
+
   animation: rotate 2s ease-in-out infinite;
-  transform-origin: center center;
   animation-delay: calc(var(--spinner-point) * var(--delay));
   animation-fill-mode: both;
 }
@@ -27,13 +50,14 @@
 .points-spinner > *::after{
   content: "";
   position: absolute;
-  /* center point vertically and most left*/
   top: 50%;
   transform: translateY(-50%);
-  width: var(--pointDiameter);
-  height: var(--pointDiameter);
-  background-color: var(--color);
+
+  width: var(--point-diameter);
+  height: var(--point-diameter);
+
   border-radius: 50%;
+  background-color: var(--color);
 }
 
 @keyframes rotate {

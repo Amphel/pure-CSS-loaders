@@ -1,59 +1,40 @@
-.loader {
-  --color: gray;
-  --width: 100px;
-
-  position: relative;
-  margin: 0 auto;
-  width: var(--width);
-}
-
-.loader::before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
-
-.circular {
-  animation: rotate 2s linear infinite;
+html,
+body {
+  margin: 0;
+  padding: 0;
   height: 100%;
-  width: 100%;
-  transform-origin: center center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
 }
 
-.path {
-  stroke: var(--color);
-  fill: none;
-  stroke-width: 2px;
-  stroke-miterlimit: 10px;
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  stroke-linecap: round;
-  animation: dash 1.5s ease-in-out infinite;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
 }
 
-@keyframes rotate {
-  100% {
+.circle-spinner {
+  /* change the color, size and thickness of the spinner */
+  --color: #6768ab;
+  --diameter: 80px;
+  --thickness: 7px;
+
+  width: var(--diameter);
+  height: var(--diameter);
+
+  background: transparent;
+  border-top: var(--thickness) solid var(--color);
+  border-right: var(--thickness) solid transparent;
+  border-radius: 50%;
+
+  animation: 1s spin linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px;
-  }
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124px;
   }
 }

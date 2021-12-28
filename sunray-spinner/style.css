@@ -1,32 +1,48 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+
 .spinner {
-  position: relative;
-  
-  /* number of rays. If you change the number of rays, then you should add divs in html */
+  /* change the color of the rays in the spinner */
+  --ray-color: #6768ab;
+  /* number of the rays; if the number of the rays changes, then you should add divs in html */
   --rays: 12;
-  /* change radius of spinner */
-  --radius: 40px;
-  /* change the delay of animation */
+  /* change the diameter of the spinner */
+  --diameter: 80px;
+  /* change the speed of the animation */
   --delay: 0.1s;
+
+  position: relative;
 }
 
 .sunray {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 18px;
-  height: 6px;
+  width: calc(var(--diameter) / 4);
+  height: calc(var(--diameter) / 16);
   border-radius: 20%;
-  background-color: rgba(128, 128, 128, 0.3);
-  --az: calc(var(--data-x)*1turn/var(--rays));
-  transform: 
-    rotate(var(--az)) 
-    translate(var(--radius))
-    rotate(calc(0deg));
-  animation: lds-spinner 1s linear infinite;
-  animation-delay: calc(var(--data-x) * var(--delay));
+  background-color: var(--ray-color);
+  --ray-turn: calc(var(--ray) * 1turn / var(--rays));
+  transform:
+    rotate(var(--ray-turn))
+    translate(calc(var(--diameter) / 2));
+  animation: opacity-spinner 1s linear infinite;
+  animation-delay: calc(var(--ray) * var(--delay));
 }
 
-@keyframes lds-spinner {
+@keyframes opacity-spinner {
   0% {
     opacity: 1;
   }
